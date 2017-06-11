@@ -1,0 +1,9 @@
+C:\Users\Home\Documents\Visual Studio 2017\Projects\get-position-and-color\get-position-and-color\bin\Release\get-position-and-color.exe.config
+C:\Users\Home\Documents\Visual Studio 2017\Projects\get-position-and-color\get-position-and-color\bin\Release\get-position-and-color.exe
+C:\Users\Home\Documents\Visual Studio 2017\Projects\get-position-and-color\get-position-and-color\bin\Release\get-position-and-color.pdb
+C:\Users\Home\Documents\Visual Studio 2017\Projects\get-position-and-color\get-position-and-color\obj\Release\get-position-and-color.csprojResolveAssemblyReference.cache
+C:\Users\Home\Documents\Visual Studio 2017\Projects\get-position-and-color\get-position-and-color\obj\Release\get_position_and_color.Form1.resources
+C:\Users\Home\Documents\Visual Studio 2017\Projects\get-position-and-color\get-position-and-color\obj\Release\get_position_and_color.Properties.Resources.resources
+C:\Users\Home\Documents\Visual Studio 2017\Projects\get-position-and-color\get-position-and-color\obj\Release\get-position-and-color.csproj.GenerateResource.Cache
+C:\Users\Home\Documents\Visual Studio 2017\Projects\get-position-and-color\get-position-and-color\obj\Release\get-position-and-color.exe
+C:\Users\Home\Documents\Visual Studio 2017\Projects\get-position-and-color\get-position-and-color\obj\Release\get-position-and-color.pdb

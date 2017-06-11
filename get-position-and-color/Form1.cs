@@ -8,8 +8,7 @@ namespace get_position_and_color
     {
         private uint pixel;
         private Bitmap myImage;
-        private Color color;
-        private bool colorType = false;
+        private bool colorType = true;
 
         public Form1()
         {
@@ -41,11 +40,13 @@ namespace get_position_and_color
                 Cursor.Position = new Point(Cursor.Position.X + 1, Cursor.Position.Y);
                 ShowImage();
             }
+            if (e.KeyCode == Keys.C) colorType = !colorType;
+
 
         }
 
 
-        
+
         private void ShowInformation()
         {
             pixel = Win32.GetPixelColor(Cursor.Position.X, Cursor.Position.Y);
@@ -82,9 +83,7 @@ namespace get_position_and_color
 
         private void ShowColor_Click(object sender, EventArgs e)
         {
-            if (colorType)
-                colorType = false;
-            else colorType = true;
+            colorType = !colorType;
         }
 
     }

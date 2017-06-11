@@ -108,6 +108,7 @@
             this.Controls.Add(this.label1);
             this.Name = "Form1";
             this.Text = "Pixel Info";
+            this.TopMost = true;
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
