@@ -14,6 +14,7 @@ namespace get_position_and_color
     public partial class Form1 : Form
     {
         private uint pixel;
+        private Bitmap myImage;
 
         public Form1()
         {
@@ -35,12 +36,18 @@ namespace get_position_and_color
                 Cursor.Position = new Point(Cursor.Position.X + 1, Cursor.Position.Y);
         }
         
-            private void ShowInformation()
+        private void ShowInformation()
         {
             pixel = Win32.GetPixelColor(Cursor.Position.X, Cursor.Position.Y);
             ShowPosition.Text = Cursor.Position.X + ":" + Cursor.Position.Y;
             ShowColor.Text = Convert.ToString(pixel);
 
+        }
+
+        private void ShowImage()
+        {
+            myImage = ScreenCapturer.Capture();
+            pictureBox1.Image = myImage;
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -50,10 +57,16 @@ namespace get_position_and_color
 
         private void timer1_Tick(object sender, EventArgs e)
         {
+
             ShowInformation();
+            
+
         }
 
-
+        private void timer2_Tick(object sender, EventArgs e)
+        {
+            ShowImage();
+        }
     }
 
     sealed class Win32
@@ -79,4 +92,59 @@ namespace get_position_and_color
         }
     }
     
+}
+
+class ScreenCapturer
+{
+
+    public enum CaptureMode
+    {
+        Screen,
+        Window
+    }
+
+    [DllImport("user32.dll")]
+    private static extern IntPtr GetForegroundWindow();
+
+    [DllImport("user32.dll")]
+    private static extern IntPtr GetWindowRect(IntPtr hWnd, ref Rect rect);
+
+    [StructLayout(LayoutKind.Sequential)]
+    public struct Rect
+    {
+        public int Left;
+        public int Top;
+        public int Right;
+        public int Bottom;
+    }
+
+    public static Bitmap Capture()
+    {
+        CaptureMode screenCaptureMode = CaptureMode.Screen;
+        Rectangle bounds;
+
+        if (screenCaptureMode == CaptureMode.Screen)
+        {
+            bounds = Screen.GetBounds(Point.Empty);
+        }
+        else
+        {
+            var handle = GetForegroundWindow();
+            var rect = new Rect();
+            GetWindowRect(handle, ref rect);
+
+            bounds = new Rectangle(rect.Left, rect.Top, rect.Right, rect.Bottom);
+            //CursorPosition = new Point(Cursor.Position.X - rect.Left, Cursor.Position.Y - rect.Top);
+        }
+
+        var result = new Bitmap(bounds.Width, bounds.Height);
+
+        using (var g = Graphics.FromImage(result))
+        {
+            g.CopyFromScreen(new Point(bounds.Left, bounds.Top), Point.Empty, bounds.Size);
+        }
+
+        return result;
+    }
+
 }
