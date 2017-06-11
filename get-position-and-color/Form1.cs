@@ -15,26 +15,42 @@ namespace get_position_and_color
     {
         private uint pixel;
         private Bitmap myImage;
+        private Color color;
 
         public Form1()
         {
             InitializeComponent();
-
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyDown);
+            pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
 
         }
 
         private void Form1_KeyDown(object sender, System.Windows.Forms.KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Up)
+            {
                 Cursor.Position = new Point(Cursor.Position.X, Cursor.Position.Y - 1);
+                ShowImage();
+            }
             if (e.KeyCode == Keys.Down)
+            {
                 Cursor.Position = new Point(Cursor.Position.X, Cursor.Position.Y + 1);
+                ShowImage();
+            }
             if (e.KeyCode == Keys.Left)
+            {
                 Cursor.Position = new Point(Cursor.Position.X - 1, Cursor.Position.Y);
+                ShowImage();
+            }
             if (e.KeyCode == Keys.Right)
+            {
                 Cursor.Position = new Point(Cursor.Position.X + 1, Cursor.Position.Y);
+                ShowImage();
+            }
+
         }
+
+
         
         private void ShowInformation()
         {
@@ -47,6 +63,13 @@ namespace get_position_and_color
         private void ShowImage()
         {
             myImage = ScreenCapturer.Capture();
+            color = myImage.GetPixel(25, 25);
+            color = Color.FromArgb(color.A, 0xFF - color.R, 0xFF - color.G, 0xFF - color.B);
+            myImage.SetPixel(25, 25, color);
+            myImage.SetPixel(25, 26, color);
+            myImage.SetPixel(25, 24, color);
+            myImage.SetPixel(24, 25, color);
+            myImage.SetPixel(26, 25, color);
             pictureBox1.Image = myImage;
         }
 
@@ -81,6 +104,8 @@ namespace get_position_and_color
         [DllImport("gdi32.dll")]
         public static extern uint GetPixel(IntPtr hDC, int x, int y);
 
+
+
         #endregion
 
         static public uint GetPixelColor(int x, int y)
@@ -90,53 +115,23 @@ namespace get_position_and_color
             ReleaseDC(IntPtr.Zero, hDC);
             return pixel;
         }
+
+
+
     }
-    
+
 }
 
 class ScreenCapturer
 {
 
-    public enum CaptureMode
-    {
-        Screen,
-        Window
-    }
-
-    [DllImport("user32.dll")]
-    private static extern IntPtr GetForegroundWindow();
-
-    [DllImport("user32.dll")]
-    private static extern IntPtr GetWindowRect(IntPtr hWnd, ref Rect rect);
-
-    [StructLayout(LayoutKind.Sequential)]
-    public struct Rect
-    {
-        public int Left;
-        public int Top;
-        public int Right;
-        public int Bottom;
-    }
-
     public static Bitmap Capture()
     {
-        CaptureMode screenCaptureMode = CaptureMode.Screen;
         Rectangle bounds;
-
-        if (screenCaptureMode == CaptureMode.Screen)
-        {
-            bounds = Screen.GetBounds(Point.Empty);
-        }
-        else
-        {
-            var handle = GetForegroundWindow();
-            var rect = new Rect();
-            GetWindowRect(handle, ref rect);
-
-            bounds = new Rectangle(rect.Left, rect.Top, rect.Right, rect.Bottom);
-            //CursorPosition = new Point(Cursor.Position.X - rect.Left, Cursor.Position.Y - rect.Top);
-        }
-
+        Size size = new Size(50,50);
+        Point center = new Point(Cursor.Position.X - 25, Cursor.Position.Y - 25);
+        bounds = new Rectangle(center, size);
+ 
         var result = new Bitmap(bounds.Width, bounds.Height);
 
         using (var g = Graphics.FromImage(result))
