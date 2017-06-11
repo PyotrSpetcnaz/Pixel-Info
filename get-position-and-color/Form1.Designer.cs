@@ -81,7 +81,7 @@
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Location = new System.Drawing.Point(366, 12);
+            this.pictureBox1.Location = new System.Drawing.Point(230, 15);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(200, 200);
             this.pictureBox1.TabIndex = 5;
@@ -90,21 +90,21 @@
             // timer2
             // 
             this.timer2.Enabled = true;
-            this.timer2.Interval = 1000;
+            this.timer2.Interval = 10;
             this.timer2.Tick += new System.EventHandler(this.timer2_Tick);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(586, 261);
+            this.ClientSize = new System.Drawing.Size(442, 231);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.ShowColor);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.ShowPosition);
             this.Controls.Add(this.label1);
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.Text = "Pixel Info";
             this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);

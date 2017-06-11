@@ -20,8 +20,14 @@ namespace get_position_and_color
         public Form1()
         {
             InitializeComponent();
-            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyDown);
+            KeyDown += new KeyEventHandler(Form1_KeyDown);
+            MouseMove += new MouseEventHandler(Form1_MouseMove);
             pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
+
+        }
+
+        private void Form1_MouseMove(object sender, MouseEventArgs e)
+        {
 
         }
 
