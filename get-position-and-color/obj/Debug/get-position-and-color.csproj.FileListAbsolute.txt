@@ -1,0 +1,9 @@
+c:\users\home\documents\visual studio 2017\Projects\get-position-and-color\get-position-and-color\obj\Debug\get-position-and-color.csprojResolveAssemblyReference.cache
+c:\users\home\documents\visual studio 2017\Projects\get-position-and-color\get-position-and-color\obj\Debug\get_position_and_color.Properties.Resources.resources
+c:\users\home\documents\visual studio 2017\Projects\get-position-and-color\get-position-and-color\obj\Debug\get-position-and-color.csproj.GenerateResource.Cache
+c:\users\home\documents\visual studio 2017\Projects\get-position-and-color\get-position-and-color\bin\Debug\get-position-and-color.exe.config
+c:\users\home\documents\visual studio 2017\Projects\get-position-and-color\get-position-and-color\bin\Debug\get-position-and-color.exe
+c:\users\home\documents\visual studio 2017\Projects\get-position-and-color\get-position-and-color\bin\Debug\get-position-and-color.pdb
+c:\users\home\documents\visual studio 2017\Projects\get-position-and-color\get-position-and-color\obj\Debug\get-position-and-color.exe
+c:\users\home\documents\visual studio 2017\Projects\get-position-and-color\get-position-and-color\obj\Debug\get-position-and-color.pdb
+c:\users\home\documents\visual studio 2017\Projects\get-position-and-color\get-position-and-color\obj\Debug\get_position_and_color.Form1.resources
