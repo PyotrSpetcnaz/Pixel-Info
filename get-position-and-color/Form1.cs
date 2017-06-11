@@ -18,13 +18,29 @@ namespace get_position_and_color
         public Form1()
         {
             InitializeComponent();
+
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyDown);
+
         }
 
-        private void ShowInformation()
+        private void Form1_KeyDown(object sender, System.Windows.Forms.KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Up)
+                Cursor.Position = new Point(Cursor.Position.X, Cursor.Position.Y - 1);
+            if (e.KeyCode == Keys.Down)
+                Cursor.Position = new Point(Cursor.Position.X, Cursor.Position.Y + 1);
+            if (e.KeyCode == Keys.Left)
+                Cursor.Position = new Point(Cursor.Position.X - 1, Cursor.Position.Y);
+            if (e.KeyCode == Keys.Right)
+                Cursor.Position = new Point(Cursor.Position.X + 1, Cursor.Position.Y);
+        }
+        
+            private void ShowInformation()
         {
             pixel = Win32.GetPixelColor(Cursor.Position.X, Cursor.Position.Y);
             ShowPosition.Text = Cursor.Position.X + ":" + Cursor.Position.Y;
             ShowColor.Text = Convert.ToString(pixel);
+
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -36,6 +52,8 @@ namespace get_position_and_color
         {
             ShowInformation();
         }
+
+
     }
 
     sealed class Win32
