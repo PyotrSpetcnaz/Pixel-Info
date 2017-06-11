@@ -51,10 +51,11 @@
             // ShowPosition
             // 
             this.ShowPosition.AutoSize = true;
-            this.ShowPosition.Location = new System.Drawing.Point(79, 15);
+            this.ShowPosition.Location = new System.Drawing.Point(66, 15);
             this.ShowPosition.Name = "ShowPosition";
-            this.ShowPosition.Size = new System.Drawing.Size(0, 13);
+            this.ShowPosition.Size = new System.Drawing.Size(29, 13);
             this.ShowPosition.TabIndex = 2;
+            this.ShowPosition.Text = "label";
             // 
             // label2
             // 
@@ -68,10 +69,12 @@
             // ShowColor
             // 
             this.ShowColor.AutoSize = true;
-            this.ShowColor.Location = new System.Drawing.Point(82, 41);
+            this.ShowColor.Location = new System.Drawing.Point(66, 41);
             this.ShowColor.Name = "ShowColor";
-            this.ShowColor.Size = new System.Drawing.Size(0, 13);
+            this.ShowColor.Size = new System.Drawing.Size(29, 13);
             this.ShowColor.TabIndex = 4;
+            this.ShowColor.Text = "label";
+            this.ShowColor.Click += new System.EventHandler(this.ShowColor_Click);
             // 
             // timer1
             // 

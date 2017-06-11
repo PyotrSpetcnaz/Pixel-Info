@@ -16,6 +16,7 @@ namespace get_position_and_color
         private uint pixel;
         private Bitmap myImage;
         private Color color;
+        private bool colorType = false;
 
         public Form1()
         {
@@ -61,9 +62,19 @@ namespace get_position_and_color
         private void ShowInformation()
         {
             pixel = Win32.GetPixelColor(Cursor.Position.X, Cursor.Position.Y);
-            ShowPosition.Text = Cursor.Position.X + ":" + Cursor.Position.Y;
-            ShowColor.Text = Convert.ToString(pixel);
+            ShowPosition.Text = "x="+ Cursor.Position.X + " y=" + Cursor.Position.Y;
+            if (colorType)
+            {
+                Color arbPixel = Color.FromArgb((int)(pixel & 0x000000FF),
+                (int)(pixel & 0x0000FF00) >> 8,
+                (int)(pixel & 0x00FF0000) >> 16);
+                ShowColor.Text = ConvertColor.ToString(arbPixel);
 
+            }
+            else
+            { 
+                ShowColor.Text = Convert.ToString(pixel);
+            }
         }
 
         private void ShowImage()
@@ -96,6 +107,14 @@ namespace get_position_and_color
         {
             ShowImage();
         }
+
+        private void ShowColor_Click(object sender, EventArgs e)
+        {
+            if (colorType)
+                colorType = false;
+            else colorType = true;
+        }
+
     }
 
     sealed class Win32
@@ -148,4 +167,14 @@ class ScreenCapturer
         return result;
     }
 
+}
+
+ class ConvertColor
+{ 
+    public static string ToString(Color c)
+    {
+        string s;
+        s = "R=" + c.R + " G=" + c.G + " B=" + c.B;
+        return s;
+    }
 }
