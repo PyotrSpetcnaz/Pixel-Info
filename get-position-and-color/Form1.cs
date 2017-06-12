@@ -15,34 +15,40 @@ namespace get_position_and_color
             InitializeComponent();
             KeyDown += new KeyEventHandler(Form1_KeyDown);
             pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
-
         }
 
         private void Form1_KeyDown(object sender, System.Windows.Forms.KeyEventArgs e)
         {
-            if (e.KeyCode == Keys.Up)
+            int distance = 1;
+            if (e.Shift)
             {
-                Cursor.Position = new Point(Cursor.Position.X, Cursor.Position.Y - 1);
+                distance = 10;
+            }
+            if (e.Control)
+            {
+                distance = 5;
+            }
+            if (e.KeyCode == Keys.Up)
+            { 
+                Cursor.Position = new Point(Cursor.Position.X, Cursor.Position.Y - distance);
                 ShowImage();
             }
             if (e.KeyCode == Keys.Down)
             {
-                Cursor.Position = new Point(Cursor.Position.X, Cursor.Position.Y + 1);
+                Cursor.Position = new Point(Cursor.Position.X, Cursor.Position.Y + distance);
                 ShowImage();
             }
             if (e.KeyCode == Keys.Left)
             {
-                Cursor.Position = new Point(Cursor.Position.X - 1, Cursor.Position.Y);
+                Cursor.Position = new Point(Cursor.Position.X - distance, Cursor.Position.Y);
                 ShowImage();
             }
             if (e.KeyCode == Keys.Right)
             {
-                Cursor.Position = new Point(Cursor.Position.X + 1, Cursor.Position.Y);
+                Cursor.Position = new Point(Cursor.Position.X + distance, Cursor.Position.Y);
                 ShowImage();
             }
             if (e.KeyCode == Keys.C) colorType = !colorType;
-
-
         }
 
 
@@ -57,7 +63,6 @@ namespace get_position_and_color
                 (int)(pixel & 0x0000FF00) >> 8,
                 (int)(pixel & 0x00FF0000) >> 16);
                 ShowColor.Text = ConvertColor.ToString(arbPixel);
-
             }
             else
             { 
@@ -88,5 +93,3 @@ namespace get_position_and_color
 
     }
 }
-
-

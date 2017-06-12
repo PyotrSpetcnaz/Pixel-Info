@@ -6,9 +6,6 @@ namespace get_position_and_color
     static class Program
     {
 
-        /// <summary>
-        /// The main entry point for the application.
-        /// </summary>
         [STAThread]
         static void Main()
         {

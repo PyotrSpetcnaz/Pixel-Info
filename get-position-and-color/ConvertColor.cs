@@ -2,7 +2,7 @@
 
 namespace get_position_and_color
 {
-    class ConvertColor
+    sealed class ConvertColor
     {
         public static string ToString(Color c)
         {

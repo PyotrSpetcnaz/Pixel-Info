@@ -15,16 +15,25 @@ namespace get_position_and_color
         private static Bitmap DrawPointer(Bitmap image)
         {
             Color color = image.GetPixel(25, 25);
-            color = Color.FromArgb(color.A, 0xFF - color.R, 0xFF - color.G, 0xFF - color.B);
-            image.SetPixel(25, 25, color);
-            image.SetPixel(25, 26, color);
-            image.SetPixel(25, 24, color);
-            image.SetPixel(24, 25, color);
-            image.SetPixel(26, 25, color);
+            //image.SetPixel(25, 25, Invert(color));
+            color = image.GetPixel(26, 26);
+            image.SetPixel(26, 26, Invert(color));
+            color = image.GetPixel(24,24);
+            image.SetPixel(24, 24, Invert(color));
+            color = image.GetPixel(24,26);
+            image.SetPixel(24, 26, Invert(color));
+            color = image.GetPixel(26,24);
+            image.SetPixel(26, 24, Invert(color));
             return image;
         }
 
-        public static Bitmap Capture()
+        private static Color Invert(Color c)
+        {
+            c = Color.FromArgb(c.A, 0xFF - c.R, 0xFF - c.G, 0xFF - c.B);
+            return c;
+        }
+
+        private static Bitmap Capture()
         {
             Rectangle bounds;
             Size size = new Size(50, 50);
