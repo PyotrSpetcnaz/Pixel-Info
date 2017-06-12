@@ -1,0 +1,8 @@
+1
+Position: {X=587,Y=604}
+RGB:      R=30 G=30 B=30
+uint:     1973790
+2
+Position: {X=587,Y=599}
+RGB:      R=30 G=30 B=30
+uint:     1973790
